@@ -1,27 +1,24 @@
 import axios from "axios";
 
 const apiInstance = axios.create({
-    baseURL: "https://api.escuelajs.co/api/v1",
-    headers:{
-        'Content-Type': 'application/json',
-       
+    baseURL: "https://api.escuelajs.co/api/v1/",
+    timeout: 100000,
+    headers: {
+        "Content-Type": "application/json",
     },
-    timeout: 10000
+});
 
-})
-
-apiInstance .interceptors.response.use(
+apiInstance.interceptors.request.use(
     (request) => {
-        const token = localStorage.getItem("token")
-        if(token){
-            request.headers.Authorization = `Bearer ${token}`
+        const token = localStorage.getItem("Token");
+        if (token) {
+            request.headers.Authorization = `Bearer ${token}`;
         }
-        return request
-       
+        return request;
     },
     (error) => {
-        return Promise.reject(error)
+        return Promise.reject(error);
     }
+);
 
-)
 export default apiInstance;

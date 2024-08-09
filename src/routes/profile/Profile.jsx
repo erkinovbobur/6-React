@@ -1,27 +1,30 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from '../../api/axios'
 import "./Profile.css"
+import { useNavigate } from 'react-router-dom';
 
  const Profile = () => {
-    const[profile, setProfile] = useState(null)
+  const navigate = useNavigate;
+  const [profile, setProfile] = useState({}); 
 
-    useEffect (() => {
-        axios("/auth/profile")
-        .then(response => setProfile(response.data))
-          
-            
-        
-    }, [])
-    console.log(profile)
+  useEffect(() => {
+    axios.get("auth/profile")
+      .then(response => setProfile(response.data))
+      .catch(error => {
+        console.error("Error fetching profile:", error);
+        if (error.response && error.response.status === 401) {
+          navigate('/register');
+        }
+      });
+  }, [navigate]);
   return (
     
-    <div>
-       {
-     profile && 
-     <img  src={profile.avatar} alt="" />
-    
-       } 
-        
+    <div className='wrapper' >
+      <div>
+       <img src={profile.avatar} alt="" />
+        <p>{profile.name}</p>
+        <p>{profile.email}</p>
+    </div>
     </div>
          
         

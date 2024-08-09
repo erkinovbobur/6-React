@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import axios from '../../api/axios'
 import { useNavigate } from 'react-router-dom'
 import "./Register.css"
  const Register = () => {
-  const Navigate = useNavigate();
+    const Navigate = useNavigate();
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setpassword] = useState("")
@@ -22,9 +22,9 @@ const handleUserRegister = (e) => {
       } )
 }
 
-
 return (
-<form onSubmit={handleUserRegister}>
+  <div className='wrapper' >
+    <form onSubmit={handleUserRegister}>
 <input type='text' placeholder='Enter your name' onChange={(e) => setName(e.target.value)} />
 <input type="email" placeholder='Enter your email' onChange={(e) => setEmail(e.target.value)} />
 <input type='password' placeholder='Enter your password' onChange={(e) => setpassword(e.target.value)} />
@@ -32,6 +32,7 @@ return (
 <button type='submit'>Register</button>
 
 </form>
+  </div>
   )
 }
 

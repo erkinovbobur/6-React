@@ -1,4 +1,5 @@
-body {
+
+  .wrapper{
     font-family: 'Lato', sans-serif;
     background-color: #f0f4f8;
     margin: 0;
@@ -8,7 +9,6 @@ body {
     align-items: center;
     height: 100vh;
   }
-  
   form {
     width: 100%;
     max-width: 360px;

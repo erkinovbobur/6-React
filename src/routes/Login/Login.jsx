@@ -23,14 +23,16 @@ axios.post("/auth/login", {email, password})
 
  }
   return (
-    <form onSubmit={handleUserLogin}>
+    <div className="wrapper" >
+      <form onSubmit={handleUserLogin}>
 
-    <input type="email" placeholder='Enter your email' onChange={(e) => setEmail(e.target.value)} />
-    <input type='password' placeholder='Enter your password' onChange={(e) => setpassword(e.target.value)} />
- 
-    <button type='submit'>Login</button>
-    
-    </form>
+  <input type="email" placeholder='Enter your email' onChange={(e) => setEmail(e.target.value)} />
+  <input type='password' placeholder='Enter your password' onChange={(e) => setpassword(e.target.value)} />
+
+  <button type='submit'>Login</button>
+
+</form>
+    </div>
   )
 
 }
